@@ -55,7 +55,7 @@ class Page extends Component {
   render() {
     return (
       <div>
-        <GitHubForkRibbon href="//www.google.com"
+        <GitHubForkRibbon href="https://github.com/lordmancer/lm2-markets"
               target="_blank"
               position="right">
           Fork me on GitHub

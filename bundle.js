@@ -23672,7 +23672,7 @@ var Page = function (_Component) {
         null,
         _react2.default.createElement(
           _reactGithubForkRibbon2.default,
-          { href: '//www.google.com',
+          { href: 'https://github.com/lordmancer/lm2-markets',
             target: '_blank',
             position: 'right' },
           'Fork me on GitHub'
