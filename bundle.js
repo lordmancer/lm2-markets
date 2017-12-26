@@ -23666,7 +23666,7 @@ var Page = function (_Component) {
           { href: 'https://github.com/lordmancer/lm2-markets',
             target: '_blank',
             position: 'right' },
-          'Fork us on GitHub'
+          'Fork me on GitHub'
         ),
         _react2.default.createElement(
           _reactRouterDom.BrowserRouter,
@@ -23680,7 +23680,7 @@ var Page = function (_Component) {
               _react2.default.createElement(
                 'h4',
                 { style: { padding: "0.5em" } },
-                'Languge/Region:'
+                'Language/Region:'
               ),
               _react2.default.createElement(
                 'div',
@@ -39629,136 +39629,140 @@ var Markets = function (_Component) {
               ' / ',
               _this2.props.langRes["teleport.name." + market.locationId + "/" + market.cityId]
             ),
-            market.resLots.length > 0 && _react2.default.createElement(
+            _react2.default.createElement(
               'div',
-              null,
-              _react2.default.createElement(
-                'h4',
+              { style: { paddingLeft: "1em" } },
+              market.resLots.length > 0 && _react2.default.createElement(
+                'div',
                 null,
-                'Resources'
-              ),
-              _react2.default.createElement(
-                _reactToolbox.Table,
-                { selectable: false, style: { marginTop: 10 } },
                 _react2.default.createElement(
-                  _reactToolbox.TableHead,
+                  'h4',
                   null,
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Type'
-                  ),
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Amount'
-                  ),
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Price'
-                  ),
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Currency'
-                  )
+                  'Resources'
                 ),
-                market.resLots.map(function (lot) {
-                  return _react2.default.createElement(
-                    _reactToolbox.TableRow,
-                    { key: lot.id },
+                _react2.default.createElement(
+                  _reactToolbox.Table,
+                  { selectable: false, style: { marginTop: 10 } },
+                  _react2.default.createElement(
+                    _reactToolbox.TableHead,
+                    null,
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      _this2.props.langRes["stuff." + lot.stuff.id + ".name"]
+                      'Type'
                     ),
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      lot.stuff.count
+                      'Amount'
                     ),
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      lot.price
+                      'Price'
                     ),
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      lot.currency
+                      'Currency'
                     )
-                  );
-                })
-              )
-            ),
-            market.thingLots.length > 0 && _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'h4',
+                  ),
+                  market.resLots.map(function (lot) {
+                    return _react2.default.createElement(
+                      _reactToolbox.TableRow,
+                      { key: lot.id },
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        _this2.props.langRes["stuff." + lot.stuff.id + ".name"]
+                      ),
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        lot.stuff.count
+                      ),
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        lot.price
+                      ),
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        lot.currency
+                      )
+                    );
+                  })
+                )
+              ),
+              market.thingLots.length > 0 && _react2.default.createElement(
+                'div',
                 null,
-                'Things'
-              ),
-              _react2.default.createElement(
-                _reactToolbox.Table,
-                { selectable: false, style: { marginTop: 10 } },
                 _react2.default.createElement(
-                  _reactToolbox.TableHead,
+                  'h4',
                   null,
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Name'
-                  ),
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Level'
-                  ),
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Price'
-                  ),
-                  _react2.default.createElement(
-                    _reactToolbox.TableCell,
-                    null,
-                    'Currency'
-                  )
+                  'Things'
                 ),
-                market.thingLots.map(function (lot) {
-                  return _react2.default.createElement(
-                    _reactToolbox.TableRow,
-                    { key: lot.id },
+                _react2.default.createElement(
+                  _reactToolbox.Table,
+                  { selectable: false, style: { marginTop: 10 } },
+                  _react2.default.createElement(
+                    _reactToolbox.TableHead,
+                    null,
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      _this2.props.langRes["stuff." + lot.stuff.thing.nameId + ".name"]
+                      'Name'
                     ),
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      lot.stuff.thing.level
+                      'Level'
                     ),
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      lot.price
+                      'Price'
                     ),
                     _react2.default.createElement(
                       _reactToolbox.TableCell,
                       null,
-                      lot.currency
+                      'Currency'
                     )
-                  );
-                })
+                  ),
+                  market.thingLots.map(function (lot) {
+                    return _react2.default.createElement(
+                      _reactToolbox.TableRow,
+                      { key: lot.id },
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        _this2.props.langRes["stuff." + lot.stuff.thing.nameId + ".name"]
+                      ),
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        lot.stuff.thing.level
+                      ),
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        lot.price
+                      ),
+                      _react2.default.createElement(
+                        _reactToolbox.TableCell,
+                        null,
+                        lot.currency
+                      )
+                    );
+                  })
+                )
+              ),
+              market.resLots.length == 0 && market.thingLots.length == 0 && _react2.default.createElement(
+                'p',
+                null,
+                'There are no any items on market in the city.'
               )
-            ),
-            market.resLots.length == 0 && market.thingLots.length == 0 && _react2.default.createElement(
-              'p',
-              null,
-              'There are no any items on market in the city.'
             )
           );
         })
