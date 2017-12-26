@@ -2,7 +2,10 @@ import { combineReducers } from 'redux'
 
 const initialState = {
   lang: "en",
-  markets: []
+  markets: [],
+  lots: [],
+  thingLots: [],
+  resLots: [],
 }
 
 export function todoApp(state = initialState, action) {
@@ -27,8 +30,8 @@ export function todoApp(state = initialState, action) {
       })
 
     case 'MARKET_LOADED':
-      const m = state.markets.filter(m => !(m.locationId == action.locationId && m.cityId == action.cityId))
-      m.push(
+      const markets = state.markets.filter(m => !(m.locationId == action.locationId && m.cityId == action.cityId))
+      markets.push(
           {
             locationId: action.locationId,
             cityId: action.cityId,
@@ -37,8 +40,19 @@ export function todoApp(state = initialState, action) {
             thingLots: action.lots.filter(lot => lot.stuff.$type == "Market.OneThingStuff.v2")
           }
       )
+
+      const lots = state.lots.filter(m => !(m.locationId == action.locationId && m.cityId == action.cityId))
+      action.lots.forEach (lot => {
+        lot.locationId = action.locationId
+        lot.cityId = action.cityId
+        lots.push(lot)
+      })
+      console.log(lots)
       return Object.assign({}, state, {
-        markets: m
+        markets: markets,
+        lots: lots,
+        resLots: lots.filter(lot => lot.stuff.$type == "Market.ResourcesStuff"),
+        thingLots: lots.filter(lot => lot.stuff.$type == "Market.OneThingStuff.v2")
       })
 
     default:
