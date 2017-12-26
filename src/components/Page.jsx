@@ -14,6 +14,7 @@ import {
   Button,
   Dropdown
 } from 'react-toolbox';
+import GitHubForkRibbon from 'react-github-fork-ribbon';
 
 import { connect } from 'react-redux'
 import {
@@ -54,11 +55,16 @@ class Page extends Component {
   render() {
     return (
       <div>
+        <GitHubForkRibbon href="//www.google.com"
+              target="_blank"
+              position="right">
+          Fork me on GitHub
+        </GitHubForkRibbon>
         <Router>
           <Layout>
             <AppBar title="Lordmancer II Markets" fixed>
               <h4 style={{padding: "0.5em" }}>Languges/Region:</h4>
-              <div style={{"color": "#000"}}>
+              <div style={{"color": "#000", "marginRight": "150"}}>
                 <Dropdown style={{"background": "#fff", "color": "#000", padding: "0.5em"}}
                     source={countries}
                     value={this.state.value}
