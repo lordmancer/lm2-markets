@@ -58,12 +58,12 @@ class Page extends Component {
         <GitHubForkRibbon href="https://github.com/lordmancer/lm2-markets"
               target="_blank"
               position="right">
-          Fork me on GitHub
+          Fork us on GitHub
         </GitHubForkRibbon>
         <Router>
           <Layout>
             <AppBar title="Lordmancer II Markets" fixed>
-              <h4 style={{padding: "0.5em" }}>Languges/Region:</h4>
+              <h4 style={{padding: "0.5em" }}>Languge/Region:</h4>
               <div style={{"color": "#000", "marginRight": "150"}}>
                 <Dropdown style={{"background": "#fff", "color": "#000", padding: "0.5em"}}
                     source={countries}

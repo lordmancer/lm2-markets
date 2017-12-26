@@ -23675,7 +23675,7 @@ var Page = function (_Component) {
           { href: 'https://github.com/lordmancer/lm2-markets',
             target: '_blank',
             position: 'right' },
-          'Fork me on GitHub'
+          'Fork us on GitHub'
         ),
         _react2.default.createElement(
           _reactRouterDom.BrowserRouter,
@@ -23689,7 +23689,7 @@ var Page = function (_Component) {
               _react2.default.createElement(
                 'h4',
                 { style: { padding: "0.5em" } },
-                'Languges/Region:'
+                'Languge/Region:'
               ),
               _react2.default.createElement(
                 'div',
