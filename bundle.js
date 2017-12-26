@@ -23703,7 +23703,7 @@ var Page = function (_Component) {
                   null,
                   _react2.default.createElement(
                     _reactRouterDom.Link,
-                    { to: '/markets' },
+                    { to: '/lm2-markets/markets' },
                     'Markets'
                   )
                 )
@@ -23719,9 +23719,12 @@ var Page = function (_Component) {
                   _reactRouterDom.Switch,
                   null,
                   _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render() {
-                      return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/markets' });
+                      return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/lm2-markets/markets' });
                     } }),
-                  _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/markets', render: function render() {
+                  _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/lm2-markets', render: function render() {
+                      return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/lm2-markets/markets' });
+                    } }),
+                  _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/lm2-markets/markets', render: function render() {
                       return _react2.default.createElement(_Markets2.default, null);
                     } })
                 )

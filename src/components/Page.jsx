@@ -68,14 +68,15 @@ class Page extends Component {
             </AppBar>
             <NavDrawer active={false} pinned={true} clipped={true}>
                 <div style={{textAlign: "center"}}>
-                  <div><Link to='/markets'>Markets</Link></div>
+                  <div><Link to='/lm2-markets/markets'>Markets</Link></div>
                 </div>
             </NavDrawer>
             <Panel>
                 <RouterToUrlQuery>
                   <Switch>
-                      <Route exact path="/" render={() => <Redirect to="/markets"/>} />
-                      <Route exact path="/markets" render={() => <Markets/>} />
+                      <Route exact path="/" render={() => <Redirect to="/lm2-markets/markets"/>} />
+                      <Route exact path="/lm2-markets" render={() => <Redirect to="/lm2-markets/markets"/>} />
+                      <Route exact path="/lm2-markets/markets" render={() => <Markets/>} />
                   </Switch>
                 </RouterToUrlQuery>
             </Panel>
