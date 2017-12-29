@@ -25,6 +25,6 @@ after_success:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"  
   - git add bundle.js
-  - git commit --message "Travis build - 2"
-  - git remote add origin-pages https://$GITHUB_TOKEN@github.com/lordmancer/lm2-markets.git
-  - git push origin master
+  - git commit -m "Travis build - 2"
+  - git remote add origin-pages https://${GITHUB_TOKEN}@github.com/lordmancer/lm2-markets.git
+  - git push origin-pages HEAD:master
