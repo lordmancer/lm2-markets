@@ -13,19 +13,29 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Link, 
   Redirect
 } from 'react-router-dom'
+import { RouterToUrlQuery } from 'react-url-query';
 
 const store = createStore(todoApp, applyMiddleware(thunkMiddleware))
 
 const render = () =>
   ReactDOM.render(
     <Provider store={store}>
-      <Page/>
+      <Router>
+        <RouterToUrlQuery>
+          <Switch>
+              <Route exact path="/" render={() => <Redirect to="/lm2-markets/en/markets"/>} />
+              <Route exact path="/lm2-markets" render={() => <Redirect to="/lm2-markets/en/markets"/>} />
+              <Route exact path="/lm2-markets/en" render={() => <Redirect to="/lm2-markets/en/markets"/>} />
+              <Route exact path="/lm2-markets/:id/markets" render={({match}) => <Page region={match.params.id}/>} />
+          </Switch>
+        </RouterToUrlQuery>
+      </Router>
     </Provider>,
     document.getElementById('app')
   )
 
 render()
-store.dispatch(loadLangRes("en"))
 store.subscribe(render)

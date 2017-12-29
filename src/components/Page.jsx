@@ -44,6 +44,7 @@ class Page extends Component {
   }
 
   componentDidMount() {
+    this.changeLang(this.props.region)
   }
 
   changeLang(l) {
@@ -60,34 +61,26 @@ class Page extends Component {
               position="right">
           Fork me on GitHub
         </GitHubForkRibbon>
-        <Router>
-          <Layout>
-            <AppBar title="Lordmancer II Markets.." fixed>
-              <h4 style={{padding: "0.5em" }}>Language/Region:</h4>
-              <div style={{"color": "#000", "marginRight": "150"}}>
-                <Dropdown style={{"background": "#fff", "color": "#000", padding: "0.5em"}}
-                    source={countries}
-                    value={this.state.value}
-                    onChange={(v) => this.changeLang(v)}
-                  />
+        <Layout>
+          <AppBar title="Lordmancer II Markets.." fixed>
+            <h4 style={{padding: "0.5em" }}>Language/Region:</h4>
+            <div style={{"color": "#000", "marginRight": "150"}}>
+              <Dropdown style={{"background": "#fff", "color": "#000", padding: "0.5em"}}
+                  source={countries}
+                  value={this.state.value}
+                  onChange={(v) => this.changeLang(v)}
+                />
+            </div>
+          </AppBar>
+          <NavDrawer active={false} pinned={true} clipped={true}>
+              <div style={{textAlign: "center"}}>
+                <div><Link to={'/lm2-markets/' + this.state.value + '/markets'}>Markets</Link></div>
               </div>
-            </AppBar>
-            <NavDrawer active={false} pinned={true} clipped={true}>
-                <div style={{textAlign: "center"}}>
-                  <div><Link to='/lm2-markets/markets'>Markets</Link></div>
-                </div>
-            </NavDrawer>
-            <Panel>
-                <RouterToUrlQuery>
-                  <Switch>
-                      <Route exact path="/" render={() => <Redirect to="/lm2-markets/markets"/>} />
-                      <Route exact path="/lm2-markets" render={() => <Redirect to="/lm2-markets/markets"/>} />
-                      <Route exact path="/lm2-markets/markets" render={() => <Markets/>} />
-                  </Switch>
-                </RouterToUrlQuery>
-            </Panel>
-          </Layout>
-        </Router>
+          </NavDrawer>
+          <Panel>
+              <Markets/>
+          </Panel>
+        </Layout>
       </div>
     );
   }
