@@ -1,4 +1,9 @@
+branches:
+  only:
+  - dev
+
 language: node_js
+
 node_js:
   - "8"
 
@@ -8,6 +13,9 @@ cache:
 
 install:
   - npm install
+
+before_script:
+  - git pull origin master
 
 script:
   - npm run build
