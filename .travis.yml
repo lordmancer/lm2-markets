@@ -27,4 +27,4 @@ after_success:
   - git add bundle.js
   - git commit --message "Travis build - 2"
   - git remote add origin-pages https://${GITHUB_TOKEN}@github.com/lordmancer/lm2-markets.git
-  - git push --set-upstream origin-pages master
+  - git push origin-pages master
