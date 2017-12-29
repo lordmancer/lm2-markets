@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/index.jsx",
 
   output: {
-    filename: "docs/bundle.js",
+    filename: "bundle.js",
     path: __dirname,
   },
   // Existing Code ....
