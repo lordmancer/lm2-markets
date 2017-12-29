@@ -10,11 +10,12 @@ install:
   - npm install
 
 script:
-  - npm install build
+  - npm run build
  
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-#   on:
-#     branch: master
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  local_dir: ${TRAVIS_BUILD_DIR}/docs
+  on:
+    branch: master
