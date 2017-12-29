@@ -22,7 +22,6 @@ export function todoApp(state = initialState, action) {
           map[obj.key] = obj.val;
           return map;
       }, {});
-//      console.log(result)
 
       return Object.assign({}, state, {
         lang: action.lang,
@@ -47,7 +46,7 @@ export function todoApp(state = initialState, action) {
         lot.cityId = action.cityId
         lots.push(lot)
       })
-      console.log(lots)
+
       return Object.assign({}, state, {
         markets: markets,
         lots: lots,

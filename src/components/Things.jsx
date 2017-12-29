@@ -26,7 +26,11 @@ class Things extends Component {
               }
             </TableHead>
             {
-              this.props.lots.map( (lot) => 
+              this
+                .props
+                .lots
+                .filter( lot => !this.props.nameFilter || this.props.langRes["stuff." + lot.stuff.thing.nameId + ".name"].toLowerCase().includes(this.props.nameFilter.toLowerCase()) )
+                .map( (lot) => 
                   <TableRow key={lot.id}>
                     <TableCell>{this.props.langRes["stuff." + lot.stuff.thing.nameId + ".name"]}</TableCell>
                     <TableCell>{lot.stuff.thing.level}</TableCell>

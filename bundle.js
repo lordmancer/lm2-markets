@@ -23792,7 +23792,6 @@ function todoApp() {
         map[obj.key] = obj.val;
         return map;
       }, {});
-      //      console.log(result)
 
       return Object.assign({}, state, {
         lang: action.lang,
@@ -23823,7 +23822,7 @@ function todoApp() {
         lot.cityId = action.cityId;
         lots.push(lot);
       });
-      console.log(lots);
+
       return Object.assign({}, state, {
         markets: markets,
         lots: lots,
@@ -39623,7 +39622,8 @@ var Markets = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Markets.__proto__ || Object.getPrototypeOf(Markets)).call(this, props));
 
     _this.state = {
-      index: 0
+      index: 0,
+      nameFilter: ""
     };
     return _this;
   }
@@ -39647,47 +39647,54 @@ var Markets = function (_Component) {
           _react2.default.createElement(_reactToolbox.ProgressBar, { type: 'circular', mode: 'indeterminate' })
         ),
         !!this.props.markets && _react2.default.createElement(
-          _reactToolbox.Tabs,
-          { index: this.state.index, onChange: function onChange(index) {
-              return _this2.setState({ index: index });
-            }, fixed: true },
+          'div',
+          null,
+          _react2.default.createElement(_reactToolbox.Input, { type: 'text', label: 'Name filter', name: 'name', value: this.state.nameFilter, required: true, onChange: function onChange(e) {
+              return _this2.setState({ nameFilter: e });
+            } }),
           _react2.default.createElement(
-            _reactToolbox.Tab,
-            { label: 'Group by Cities' },
-            this.props.markets.map(function (market) {
-              return _react2.default.createElement(
+            _reactToolbox.Tabs,
+            { index: this.state.index, onChange: function onChange(index) {
+                return _this2.setState({ index: index });
+              }, fixed: true },
+            _react2.default.createElement(
+              _reactToolbox.Tab,
+              { label: 'Group by Lots' },
+              this.props.state.resLots.length > 0 && _react2.default.createElement(_Resources2.default, { lots: this.props.state.resLots, showLocation: true, nameFilter: this.state.nameFilter }),
+              this.props.state.thingLots.length > 0 && _react2.default.createElement(_Things2.default, { lots: this.props.state.thingLots, showLocation: true, nameFilter: this.state.nameFilter }),
+              this.props.state.resLots.length == 0 && this.props.state.thingLots.length == 0 && _react2.default.createElement(
                 'p',
-                { key: market.locationId + "/" + market.cityId },
-                _react2.default.createElement(
-                  'h3',
-                  null,
-                  _this2.props.langRes["location." + market.locationId],
-                  ' / ',
-                  _this2.props.langRes["teleport.name." + market.locationId + "/" + market.cityId]
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { style: { paddingLeft: "1em" } },
-                  market.resLots.length > 0 && _react2.default.createElement(_Resources2.default, { lots: market.resLots }),
-                  market.thingLots.length > 0 && _react2.default.createElement(_Things2.default, { lots: market.thingLots }),
-                  market.resLots.length == 0 && market.thingLots.length == 0 && _react2.default.createElement(
-                    'p',
+                null,
+                'There are no any items on market in the city.'
+              )
+            ),
+            _react2.default.createElement(
+              _reactToolbox.Tab,
+              { label: 'Group by Cities' },
+              this.props.markets.map(function (market) {
+                return _react2.default.createElement(
+                  'p',
+                  { key: market.locationId + "/" + market.cityId },
+                  _react2.default.createElement(
+                    'h3',
                     null,
-                    'There are no any items on market in the city.'
+                    _this2.props.langRes["location." + market.locationId],
+                    ' / ',
+                    _this2.props.langRes["teleport.name." + market.locationId + "/" + market.cityId]
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { style: { paddingLeft: "1em" } },
+                    market.resLots.length > 0 && _react2.default.createElement(_Resources2.default, { lots: market.resLots, nameFilter: _this2.state.nameFilter }),
+                    market.thingLots.length > 0 && _react2.default.createElement(_Things2.default, { lots: market.thingLots, nameFilter: _this2.state.nameFilter }),
+                    market.resLots.length == 0 && market.thingLots.length == 0 && _react2.default.createElement(
+                      'p',
+                      null,
+                      'There are no any items on market in the city.'
+                    )
                   )
-                )
-              );
-            })
-          ),
-          _react2.default.createElement(
-            _reactToolbox.Tab,
-            { label: 'Group by Lots' },
-            this.props.state.resLots.length > 0 && _react2.default.createElement(_Resources2.default, { lots: this.props.state.resLots, showLocation: true }),
-            this.props.state.thingLots.length > 0 && _react2.default.createElement(_Things2.default, { lots: this.props.state.thingLots, showLocation: true }),
-            this.props.state.resLots.length == 0 && this.props.state.thingLots.length == 0 && _react2.default.createElement(
-              'p',
-              null,
-              'There are no any items on market in the city.'
+                );
+              })
             )
           )
         )
@@ -39802,7 +39809,9 @@ var Resources = function (_Component) {
               'City'
             )
           ),
-          this.props.lots.map(function (lot) {
+          this.props.lots.filter(function (lot) {
+            return !_this2.props.nameFilter || _this2.props.langRes["stuff." + lot.stuff.id + ".name"].toLowerCase().includes(_this2.props.nameFilter.toLowerCase());
+          }).map(function (lot) {
             return _react2.default.createElement(
               _reactToolbox.TableRow,
               { key: lot.id },
@@ -39948,7 +39957,9 @@ var Things = function (_Component) {
               'City'
             )
           ),
-          this.props.lots.map(function (lot) {
+          this.props.lots.filter(function (lot) {
+            return !_this2.props.nameFilter || _this2.props.langRes["stuff." + lot.stuff.thing.nameId + ".name"].toLowerCase().includes(_this2.props.nameFilter.toLowerCase());
+          }).map(function (lot) {
             return _react2.default.createElement(
               _reactToolbox.TableRow,
               { key: lot.id },

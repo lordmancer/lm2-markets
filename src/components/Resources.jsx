@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import {loadMarkets} from '../actions.js';
 
 class Resources extends Component {
-
   render() {
     return (
       <div>
@@ -26,7 +25,11 @@ class Resources extends Component {
               }
             </TableHead>
             {
-              this.props.lots.map( (lot) => 
+              this
+                .props
+                .lots
+                .filter( lot => !this.props.nameFilter || this.props.langRes["stuff." + lot.stuff.id + ".name"].toLowerCase().includes(this.props.nameFilter.toLowerCase()) )
+                .map( (lot) => 
                   <TableRow key={lot.id}>
                     <TableCell>{this.props.langRes["stuff." + lot.stuff.id + ".name"]}</TableCell>
                     <TableCell>{lot.stuff.count}</TableCell>
