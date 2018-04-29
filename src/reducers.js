@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 const initialState = {
-  lang: "en",
+  lang: null,
   markets: [],
   lots: [],
   thingLots: [],
@@ -10,6 +10,12 @@ const initialState = {
 
 export function todoApp(state = initialState, action) {
   switch (action.type) {
+    case 'LANG_RESETED':
+      return Object.assign({}, state, {
+        lang: null,
+        langRes: []
+      })
+
     case 'LANG_LOADED':
       const strs = action.res.split("\n").map(x => {
         const vals = x.split("=", 2)
@@ -36,7 +42,7 @@ export function todoApp(state = initialState, action) {
             cityId: action.cityId,
             lots: action.lots,
             resLots: action.lots.filter(lot => lot.stuff.$type == "Market.ResourcesStuff"),
-            thingLots: action.lots.filter(lot => lot.stuff.$type == "Market.OneThingStuff.v2")
+            thingLots: action.lots.filter(lot => lot.stuff.$type == "Market.OneThingStuffEx")
           }
       )
 
@@ -51,7 +57,7 @@ export function todoApp(state = initialState, action) {
         markets: markets,
         lots: lots,
         resLots: lots.filter(lot => lot.stuff.$type == "Market.ResourcesStuff"),
-        thingLots: lots.filter(lot => lot.stuff.$type == "Market.OneThingStuff.v2")
+        thingLots: lots.filter(lot => lot.stuff.$type == "Market.OneThingStuffEx")
       })
 
     default:

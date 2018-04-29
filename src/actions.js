@@ -7,6 +7,10 @@ const serverUrl = config.apiUrl
 
 export function loadLangRes(lang) {
   return dispatch => {
+    dispatch({
+      type: 'LANG_RESETED'
+    })
+
     fetch(serverUrl + '/lang/' + lang)
       .then(res => {
         return res.text()
@@ -17,6 +21,9 @@ export function loadLangRes(lang) {
             lang: lang,
             res: res
           })
+      })
+      .then(res => {
+        dispatch(loadMarkets(lang))
       })
   }
 }

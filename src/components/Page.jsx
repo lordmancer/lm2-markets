@@ -50,7 +50,7 @@ class Page extends Component {
   changeLang(l) {
     this.setState({value: l})
     this.props.dispatch(loadLangRes(l))
-    this.props.dispatch(loadMarkets(l))
+ //   this.props.dispatch(loadMarkets(l))
   }
   
   render() {
@@ -62,7 +62,7 @@ class Page extends Component {
           Fork me on GitHub
         </GitHubForkRibbon>
         <Layout>
-          <AppBar title="Lordmancer II Markets.." fixed>
+          <AppBar title="Lordmancer II Markets" fixed>
             <h4 style={{padding: "0.5em" }}>Language/Region:</h4>
             <div style={{"color": "#000", "marginRight": "150"}}>
               <Dropdown style={{"background": "#fff", "color": "#000", padding: "0.5em"}}

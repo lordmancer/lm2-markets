@@ -4,8 +4,6 @@ import {
 } from 'react-toolbox';
 import { connect } from 'react-redux'
 
-import {loadMarkets} from '../actions.js';
-
 class Resources extends Component {
   render() {
     return (
